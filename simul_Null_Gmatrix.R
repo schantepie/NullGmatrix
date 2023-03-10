@@ -121,7 +121,7 @@ simul_Null_Gmatrix<-function(ped,G,animalToExtractByPop=NULL){
           if(length(which(fullpedigree$popNum==pop & fullpedigree$generation==gen))>0){ #all population do not have the same number of generation
           fullpedigree[which(fullpedigree$popNum==pop & fullpedigree$generation==gen),grep("BreedingValue",colnames(fullpedigree))]=
             fullpedigree[which(fullpedigree$popNum==pop & fullpedigree$generation==gen),grep("BreedingValue",colnames(fullpedigree))]+ #retrieve mean BV
-            rmvnorm(n = length(which(fullpedigree$popNum==pop & fullpedigree$generation==gen)), mean=rep(0,nbTraits), sigma=matrix(GAfterRand[pop,],nbTraits,nbTraits))* #draw MVT using GAfterRand to add to mean BV
+            rmvnorm(n = length(which(fullpedigree$popNum==pop & fullpedigree$generation==gen)), mean=rep(0,nbTraits), sigma=matrix(GAfterRand[pop,]/2,nbTraits,nbTraits))* #draw MVT using GAfterRand to add to mean BV
             matrix(rep(t(sqrt(as.matrix(varscale[which(fullpedigree$popNum==pop & fullpedigree$generation==gen)]))),nbTraits),ncol=nbTraits) # previously draw MVT deviation is scaled using mean F of parents (varscale)
           }
         }
