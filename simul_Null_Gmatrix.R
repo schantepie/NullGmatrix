@@ -10,10 +10,10 @@ simul_Null_Gmatrix<-function(ped,G,animalToExtractByPop=NULL){
   
   require(pedigree)
   require(mvtnorm)
-  #initialize container and parameter   
+  #initialize containers and parameters   
   if (length(G)!=length(ped)) stop("pb number pedigree vs G")
   nbpop=length(G)
-  # for uniariate case transform G in matrix
+  # for univariate case, transforms G in matrix
   if (is.null(dim(G[[1]]))) {
     for(popNum in 1:nbpop) {
       G[[popNum]]=as.matrix(G[[popNum]])
@@ -35,7 +35,7 @@ simul_Null_Gmatrix<-function(ped,G,animalToExtractByPop=NULL){
     # if(!all(colnames(ped[[i]][1:3])==c("id","dam","sire"))) stop("pb in pedigree name")
     pedi= ped[[popNum]]
     
-    #unsure same id in different pop keep different
+    #unsure that same id in different pop keep different
     pedi$id=paste("pop",popNum,pedi$id,sep="_")
     pedi$sire=paste("pop",popNum,pedi$sire,sep="_")
     pedi$dam=paste("pop",popNum,pedi$dam,sep="_")
