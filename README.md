@@ -1,4 +1,4 @@
-Null_G_matrix : R function to simulate null genetic varaince-covariance matrix (G-matrix) among several populations starting with pedigree and posterior samples from MCMCglmm software
+Null_G_matrix : R function to simulate null genetic varaince-covariance matrix (G-matrix) among several populations starting with pedigrees and posterior samples obtained using MCMCglmm software.
 
 
 Details on the simulation process can be found in the article :
